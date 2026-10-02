@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skolresan</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <script src="assets/supersecret.js" defer></script>
+    <script src="assets/app.js" defer></script>
+</head>
+<body>
+    <main class="app-shell">
+        <header class="topbar">
+            <div class="topbar-inner">
+                <img class="brand-logo" src="assets/img/logo.png" alt="Logo" />
+                <button class="settings-button" type="button">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                    <span>Mina stationer</span>
+                </button>
+            </div>
+        </header>
+
+        <div class="page">
+            <section class="intro">
+                <div class="eyebrow">
+                    <span class="eyebrow-icon">
+                        <img src="assets/img/train-fill-svgrepo-com.svg" class="trainSVG" alt="">
+                    </span>
+                    Din smarta skolresa
+                </div>
+                <h1>Hitta snabbaste vägen till skolan.</h1>
+                <p>
+                    Se den bästa tågresan mellan hemmet och skolan – enkelt, tryggt och utan krångel.
+                </p>
+            </section>
+
+            <section class="planner-card" aria-label="Planera din resa">
+                <div class="trip-tabs" role="tablist" aria-label="Reseriktning">
+                    <button id="tab-school" aria-selected="true" class="trip-tab active" role="tab" type="button">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="16" rx="2"></rect><path d="M4 11h16"></path><path d="M12 3v8"></path><path d="M8 19l-3 3"></path><path d="M16 19l3 3"></path></svg>
+                        Till skolan
+                    </button>
+                    <button id="tab-home" aria-selected="false" class="trip-tab" role="tab" type="button">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                        Hem från skolan
+                    </button>
+                </div>
+
+                <div class="station-picker">
+                    <label class="station-field">
+                        <span class="field-label">Från</span>
+                        <span class="select-wrap">
+                            <span class="field-icon start">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            </span>
+                            <select name="from" id="select-from">
+                                <option value="Station 1">Station 1</option>
+                                <option value="Station 2">Station 2</option>
+                            </select>
+                            <span class="select-chevron">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </span>
+                        </span>
+                    </label>
+
+                    <button id="swap-btn" aria-label="Byt plats på stationerna" class="swap-button" type="button">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 8 16 13"></polyline><line x1="15" y1="8" x2="3" y2="8"></line><polyline points="8 21 3 16 8 11"></polyline><line x1="21" y1="16" x2="9" y2="16"></line></svg>
+                    </button>
+
+                    <label class="station-field">
+                        <span class="field-label">Till</span>
+                        <span class="select-wrap">
+                            <span class="field-icon destination">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            </span>
+                            <select name="to" id="select-to">
+                                <option value="Station 1">Station 1</option>
+                                <option value="Station 2" selected>Station 2</option>
+                            </select>
+                            <span class="select-chevron">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </span>
+                        </span>
+                    </label>
+                </div>
+
+                <div class="planner-bottom">
+                    <div class="when-row">
+                        <button class="when-button active-when" type="button">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                            Idag
+                        </button>
+                        <button class="when-button" type="button">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                            Nu
+                        </button>
+                    </div>
+                    <button class="search-button" id="search-btn" type="button">
+                        Hitta snabbaste resan
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Settings panel -->
+            <section class="settings-panel" aria-label="Mina stationer" style="display: none;">
+                <div>
+                    <span class="panel-kicker">Dina sparade val</span>
+                    <h2>Ändra hem- och skolstation</h2>
+                    <p>Vi använder stationerna för att göra din sökning snabbare.</p>
+                </div>
+                <div class="settings-fields">
+                    <label>
+                        <span>Hemstation</span>
+                        <select name="homeStation">
+                            <option value="Station 1">Station 1</option>
+                            <option value="Station 2">Station 2</option>
+                        </select>
+                    </label>
+                    <label>
+                        <span>Skolstation</span>
+                        <select name="schoolStation">
+                            <option value="Station 1">Station 1</option>
+                            <option value="Station 2" selected>Station 2</option>
+                        </select>
+                    </label>
+                    <button class="save-button" type="button">
+                        Spara stationer
+                    </button>
+                </div>
+            </section>
+
+            <!-- 2. Before search-->
+            <section class="quick-info">
+                <div class="info-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                </div>
+                <div>
+                    <strong>Alltid den snabbaste vägen</strong>
+                    <p>Vi jämför aktuella avgångar och visar det bästa alternativet.</p>
+                </div>
+            </section>
+
+            <!-- Search results -->
+            <section class="result-section" aria-live="polite" style="display: none;">
+                <div class="section-heading">
+                    <div>
+                        <span class="panel-kicker">Bästa resan just nu</span>
+                        <h2>Du är framme på 29 minuter</h2>
+                    </div>
+                    <span class="on-time">I tid</span>
+                </div>
+                <article class="route-card">
+                    <div class="route-time">
+                        <strong>07:42</strong>
+                        <span>29 min</span>
+                        <strong>08:11</strong>
+                    </div>
+                    <div class="route-line" aria-hidden="true">
+                        <span class="route-dot"></span>
+                        <span class="line-segment"></span>
+                        <span class="train-badge">
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="16" rx="2"></rect><path d="M4 11h16"></path><path d="M12 3v8"></path><path d="M8 19l-3 3"></path><path d="M16 19l3 3"></path></svg>
+                            Öresundståg
+                        </span>
+                        <span class="line-segment"></span>
+                        <span class="route-dot destination-dot"></span>
+                    </div>
+                    <div class="route-stations">
+                        <strong class="from-station-name">Station 1</strong>
+                        <strong class="to-station-name">Station 2</strong>
+                    </div>
+                    <div class="route-meta">
+                        <span>Direkttåg</span>
+                        <span>Spår 4</span>
+                        <span>3 min till avgång</span>
+                    </div>
+                </article>
+            </section>
+        </div>
+    </main>
+</body>
+</html>
