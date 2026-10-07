@@ -1,5 +1,5 @@
 // NYCKELN SKULLE OCKSÅ LIGGA PÅ SERVERN!
-const key = "LÄGG IN DIN KEY HÄR!";
+const key = "U09VdEJiaUxKc2owWUNPdkVkVzNzTEdRTFFJYTpBU3I5NmttMEdhRzBqX0p6alFDV09MTzFCNm9h!";
 
 async function checkToken(){
     let token = (localStorage.getItem("token") == null) ? setToken() : JSON.parse(localStorage.getItem("token"));
